@@ -19,7 +19,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchTableRows());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={s.app}>
