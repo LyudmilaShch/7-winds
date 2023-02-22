@@ -1,5 +1,5 @@
-@import "../../../../../common/styles/sass/variables";
-@import "../../../../../common/styles/sass/mixins";
+@import "../../../../../../common/styles/sass/variables";
+@import "../../../../../../common/styles/sass/mixins";
 
 
 .blockWithItemLine {
@@ -55,7 +55,7 @@
       content: '';
       width: 1px;
       background-color: white;
-      top: 20px;
+      top: 18px;
       left: 15px;
     }
   }

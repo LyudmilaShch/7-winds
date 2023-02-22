@@ -2,21 +2,28 @@ import React, { useState } from 'react';
 
 import TableCell from '@mui/material/TableCell';
 
-import { CreateRowData, RowData } from '../../../../api/types';
-import { EditInputWithFormat, TextWithFormat } from '../../../../components';
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
-import { createRow, updateRow } from '../../tableRowsSlice';
+import { createRow, updateRow } from '../../../tableRowsSlice';
 import { TableColumns } from '../tableColumns/TableColumns';
 
 import ButtonIcons from './buttonIcons/ButtonIcons';
 import s from './TableRow.module.scss';
 
-type TableRowNewType = {
+import { CreateRowData, RowData } from 'api/types';
+import { EditInputWithFormat, TextWithFormat } from 'components';
+import { useAppDispatch, useAppSelector } from 'hooks';
+
+type TableRowType = {
   rowData: RowData;
   lineLevel: number;
   hasParent: boolean;
+  parents: any;
 };
-export function TableRowNew({ rowData, hasParent, lineLevel }: TableRowNewType) {
+export function TableRowComponent({
+  rowData,
+  hasParent,
+  lineLevel,
+  parents,
+}: TableRowType) {
   const columns = TableColumns();
   const level = (
     <div>
@@ -24,7 +31,7 @@ export function TableRowNew({ rowData, hasParent, lineLevel }: TableRowNewType) 
         hasParent={hasParent}
         id={rowData.id}
         lineLevel={lineLevel}
-        parents={[rowData.id!]}
+        parents={parents}
         row={rowData}
       />
     </div>
@@ -58,7 +65,12 @@ export function TableRowNew({ rowData, hasParent, lineLevel }: TableRowNewType) 
   );
 }
 
-export function EditTableRowNew({ rowData, hasParent, lineLevel }: TableRowNewType) {
+export function EditableTableRowCompomnent({
+  rowData,
+  hasParent,
+  lineLevel,
+  parents,
+}: TableRowType) {
   const [newRowName, setNewRowName] = useState(rowData.rowName);
   const [newSalary, setNewSalary] = useState(rowData.salary);
   const [newOverheads, setNewOverheads] = useState(rowData.overheads);
@@ -67,7 +79,6 @@ export function EditTableRowNew({ rowData, hasParent, lineLevel }: TableRowNewTy
   const editable = useAppSelector(state => state.rows.editable);
   const dispatch = useAppDispatch();
   const columns = TableColumns();
-
   const saveNewRow = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       const params: CreateRowData = {
@@ -91,7 +102,7 @@ export function EditTableRowNew({ rowData, hasParent, lineLevel }: TableRowNewTy
         hasParent={hasParent}
         id={rowData.id}
         lineLevel={lineLevel}
-        parents={[rowData.id!]}
+        parents={parents}
         row={rowData}
       />
     </div>

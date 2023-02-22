@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { RowData } from '../../../../../api/types';
-import TableBodyNew from '../../tableBody/TableBodyNew';
+import TableBodyComponent from '../../TableBodyComponent';
+
+import { RowData } from 'api/types';
 
 type childrenRowsProps = {
   child: RowData[];
@@ -9,11 +10,11 @@ type childrenRowsProps = {
   lineLevel: number;
 };
 
-export default function ChildrenRowsNew(props: childrenRowsProps) {
+export default function ChildrenRows(props: childrenRowsProps) {
   const { child, parents, lineLevel } = props;
 
   return (
-    <TableBodyNew
+    <TableBodyComponent
       rowsData={child}
       lineLevel={lineLevel + 1}
       hasParent

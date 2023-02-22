@@ -13,6 +13,7 @@ export type RowData = {
   salary: number;
   supportCosts: number;
   total?: number;
+  parentsDeepLine?: number;
 };
 
 export type Data = {
@@ -22,8 +23,6 @@ export type Data = {
   editable: number | null;
   path: number[];
 };
-
-export type Editable = number | null;
 
 export type CreateRowData = {
   rowName: string;

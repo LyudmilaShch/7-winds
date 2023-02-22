@@ -3,9 +3,13 @@
 
 .tableRow{
   border-radius: 0;
+  margin: 0;
+  padding: 0;
+  @include text(14px, $textColor);
+  height: 60px !important;
+
 
   .tableCell{
-    height: 60px !important;
     margin: 0;
     padding: 0;
     @include text(14px, $textColor);

@@ -1,0 +1,20 @@
+@import "../../../../../common/styles/sass/variables";
+@import "../../../../../common/styles/sass/mixins";
+
+
+.tableCell {
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  @include text(14px, $textColor);
+  border-bottom: 1px solid $borderColor;
+
+  .input {
+    @include input();
+  }
+}
+
+
+
+
+

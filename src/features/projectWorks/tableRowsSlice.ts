@@ -38,7 +38,6 @@ export const createRow = createAsyncThunk<{ row: ResType }, CreateRowData, Thunk
     try {
       const { rowName, parentId, salary, equipmentCosts, overheads, estimatedProfit } =
         rowData;
-
       const row: RowData = {
         rowName,
         parentId,
@@ -109,7 +108,10 @@ export const slice = createSlice({
   name: 'table',
   initialState,
   reducers: {
-    addRowLocally(state, action: PayloadAction<number>) {
+    setFakeRowsData(state, action: PayloadAction<RowData[]>) {
+      state.rows = action.payload;
+    },
+    createRowLocally(state, action: PayloadAction<{ parentId: number }>) {
       const newRow: RowData = {
         equipmentCosts: 0,
         id: 0,
@@ -119,7 +121,7 @@ export const slice = createSlice({
         materials: 0,
         mimExploitation: 0,
         overheads: 0,
-        parentId: action.payload,
+        parentId: action.payload.parentId,
         rowName: '',
         salary: 0,
         supportCosts: 0,
@@ -268,4 +270,4 @@ export const slice = createSlice({
   },
 });
 
-export const { addRowLocally, setEditable, setPath } = slice.actions;
+export const { createRowLocally, setEditable, setPath } = slice.actions;
