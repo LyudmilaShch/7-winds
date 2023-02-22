@@ -1,0 +1,35 @@
+@import "../../common/styles/sass/variables";
+@import "../../common/styles/sass/mixins";
+
+.sidebarContainer {
+  width: 234px;
+  border-right: 1px solid $borderColor;
+
+  .sidebarHeader {
+    height: 44px;
+    border-bottom: 1px solid $borderColor;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    .titles{
+      display: flex;
+      flex-direction: column;
+      .mainTitle {
+        @include text(14px, $textColorSecond);
+      }
+
+      .dopTitle {
+        @include text(10px, $textColorSecond);
+      }
+    }
+
+    button {
+      @include buttonIcon();
+    }
+
+  }
+
+}

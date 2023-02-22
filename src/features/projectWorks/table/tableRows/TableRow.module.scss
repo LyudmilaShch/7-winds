@@ -1,0 +1,205 @@
+@import "../../../../common/styles/sass/variables";
+@import "../../../../common/styles/sass/mixins";
+
+.tableRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #414144;
+  height: 60px !important;
+
+  .blockWithItemLine {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 140px;
+    box-sizing: border-box;
+
+    .buttonsBlock {
+      position: relative;
+
+      .createRow {
+        @include buttonIcon();
+        z-index: 10;
+
+        &_hasparent {
+          position: relative;
+
+          &::before {
+            position: absolute;
+            content: "";
+            width: 14px;
+            border-bottom: solid white 1px;
+            top: 12px;
+            left: -9px;
+          }
+        }
+      }
+
+      .delRow {
+        @include buttonIcon();
+        z-index: 10;
+        display: none;
+      }
+
+      .buttons_cont {
+        display: flex;
+        padding: 5px;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: $borderColor;
+
+          & .delRow {
+            display: block;
+          }
+        }
+      }
+
+      .leftLine {
+        position: absolute;
+        content: '';
+        width: 1px;
+        background-color: white;
+        top: 20px;
+        left: 15px;
+      }
+    }
+  }
+
+  .blockInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
+    position: relative;
+    width: 100%;
+
+    .title {
+      flex: 1 1;
+
+      .input {
+        @include input();
+      }
+    }
+
+    .cell {
+      margin-left: -20px;
+      flex: 1 1;
+    }
+  }
+}
+
+
+.input {
+  @include input();
+}
+
+//li {
+//  display: flex;
+//  flex-direction: column;
+//  margin-left: 20px;
+//  position: relative;
+//  height: 100%;
+//
+//
+//  &::before {
+//    position: absolute;
+//    content: '';
+//    border-left: solid white 1px;
+//    top: 0;
+//    bottom: 0;
+//    left: 0;
+//    right: 0;
+//  }
+//}
+//
+//.row {
+//  display: flex;
+//  flex-direction: column;
+//  //margin-left: 20px;
+//  position: relative;
+//
+//  //.rowAfterLine {
+//  //  position: absolute;
+//  //  content: "";
+//  //  height: calc(100% - 70px);
+//  //  border-left: solid white 1px;
+//  //  left: 16px;
+//  //  top: 40px;
+//  //  &:before {
+//  //   height: 0;
+//  //  }
+//  //}
+//  .row_line {
+//    display: flex;
+//    height: 60px;
+//    align-items: center;
+//    width: 100%;
+//    border-bottom: 1px solid $borderColor;
+//    @include text(14px, $textColor);
+//
+//    .buttons {
+//      display: flex;
+//      width: 80px;
+//
+//      .buttons_cont {
+//        display: flex;
+//        padding: 5px;
+//        border-radius: 5px;
+//
+//        &:hover {
+//          background-color: $borderColor;
+//
+//          & .delRow {
+//            display: block;
+//          }
+//        }
+//      }
+//
+//      .createRow {
+//        @extend %button;
+//        z-index: 10;
+//
+//        &_hasparent {
+//          position: relative;
+//          //&::before {
+//          //  position: absolute;
+//          //  content: "";
+//          //  width: 14px;
+//          //  border-bottom: solid white 1px;
+//          //  top: 12px;
+//          //  left: -9px;
+//          //}
+//        }
+//      }
+//
+//      .delRow {
+//        @extend %button;
+//        z-index: 10;
+//        display: none;
+//      }
+//    }
+//
+//    .title {
+//      flex: 1 1;
+//
+//      .input {
+//        @include input();
+//      }
+//    }
+//
+//    .cell {
+//      margin-left: -20px;
+//      flex: 1 1;
+//    }
+//  }
+//}
+//
+//
+
+
+
+
+
+

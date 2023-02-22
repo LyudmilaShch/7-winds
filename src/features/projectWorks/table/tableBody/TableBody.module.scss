@@ -1,0 +1,14 @@
+@import "../../../../common/styles/sass/variables";
+@import "../../../../common/styles/sass/mixins";
+
+.tableRow{
+  border-radius: 0;
+
+  .tableCell{
+    height: 60px !important;
+    margin: 0;
+    padding: 0;
+    @include text(14px, $textColor);
+    border-bottom: 1px solid $borderColor;
+  }
+}

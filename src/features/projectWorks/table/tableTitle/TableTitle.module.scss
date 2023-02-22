@@ -1,0 +1,12 @@
+@import "../../../../common/styles/sass/variables";
+@import "../../../../common/styles/sass/mixins";
+
+.tableTitleContainer {
+  height: 40px;
+
+  .tableTitle {
+    @include text(14px, $textColorSecond);
+    border-bottom: 1px solid $borderColor;
+
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../common/styles/sass/variables";
+@import "../../common/styles/sass/mixins";
+
+.HeaderMenuContainer {
+  .HeaderMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    width: 300px;
+    padding-left: 20px;
+
+    .item {
+      @include text(14px, $textColorSecond);
+      background-color: transparent;
+      border: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .active {
+      border-bottom: 2px solid $textColor;
+      @include text(14px, $textColor);
+    }
+  }
+}

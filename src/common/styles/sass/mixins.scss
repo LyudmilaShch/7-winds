@@ -1,0 +1,27 @@
+@mixin text($fontSize, $color) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  color: $color;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin input() {
+  width: 70%;
+  color: #71717a;
+  background: transparent;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  border: solid 1px $borderColor;
+}
+
+@mixin buttonIcon() {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+
