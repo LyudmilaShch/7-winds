@@ -2,23 +2,22 @@ import React from 'react';
 
 import TableRow from '@mui/material/TableRow';
 
-import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { setEditable, setPath } from '../../tableRowsSlice';
 
 import s from './TableBody.module.scss';
-import { ChildrenRows } from './tableRows/childrenRows';
-import { EditableTableRowCompomnent, TableRowComponent } from './tableRows/TableRow';
-import { ParentsType } from './tableRows/TableRow.types';
+import { ChildrenRows, EditableTableRowComponent, TableRowComponent } from './tableRow';
 
 import { RowData } from 'api/types';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 type TableBodyType = {
   rowsData: RowData[];
   lineLevel: number | 0;
   hasParent: boolean;
-} & ParentsType;
+  parents: number[];
+};
 
-export default function TableBodyComponent({
+export function TableBodyComponent({
   rowsData,
   hasParent,
   lineLevel,
@@ -46,7 +45,7 @@ export default function TableBodyComponent({
                 className={s.tableRow}
                 onDoubleClick={editRowHandle}
               >
-                <EditableTableRowCompomnent
+                <EditableTableRowComponent
                   rowData={row}
                   lineLevel={lineLevel}
                   hasParent={hasParent}

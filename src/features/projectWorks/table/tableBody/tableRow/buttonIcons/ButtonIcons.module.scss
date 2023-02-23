@@ -36,7 +36,7 @@
       display: none;
     }
 
-    .buttons_cont {
+    .buttonsContainer {
       display: flex;
       padding: 5px;
       border-radius: 5px;
@@ -49,6 +49,18 @@
         }
       }
     }
+
+    .editable{
+
+      &:hover {
+        background-color: transparent;
+
+        & .delRow {
+          display: none;
+        }
+      }
+    }
+
 
     .leftLine {
       position: absolute;

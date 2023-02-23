@@ -6478,6 +6478,11 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.npmmirror.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
@@ -6791,6 +6796,13 @@ nwsapi@^2.2.0:
   version "2.2.2"
   resolved "https://registry.npmjs.org/nwsapi/-/nwsapi-2.2.2.tgz"
   integrity sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==
+
+obj-traverse@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/obj-traverse/-/obj-traverse-1.0.0.tgz#58fec7e235961e3b6922c59cfc5bb84648072146"
+  integrity sha512-o9nTdyLO725eYCZeibvur0qGPDsmTODJ8JzK36gx1yFtlZhpk3u6HZyCdOpIqTfFr4t48abiNfvE9nBTYh2nZw==
+  dependencies:
+    lodash.isequal "^4.5.0"
 
 object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"

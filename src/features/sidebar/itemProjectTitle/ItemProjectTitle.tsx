@@ -8,9 +8,10 @@ type ProjectWorksHeaderType = {
   projectName: string;
   active?: boolean;
 };
-
-// eslint-disable-next-line react/require-default-props
-export function ItemProjectTitle({ projectName, active }: ProjectWorksHeaderType) {
+export function ItemProjectTitle({
+  projectName,
+  active = false,
+}: ProjectWorksHeaderType) {
   const itemActiveClassName = `${s.active} ${s.project}`;
 
   return (

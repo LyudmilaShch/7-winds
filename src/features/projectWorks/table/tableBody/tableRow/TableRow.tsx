@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import TableCell from '@mui/material/TableCell';
 
 import { createRow, updateRow } from '../../../tableRowsSlice';
-import { TableColumns } from '../tableColumns/TableColumns';
+import { TableColumns } from '../tableColumns';
 
 import ButtonIcons from './buttonIcons/ButtonIcons';
 import s from './TableRow.module.scss';
@@ -16,7 +16,7 @@ type TableRowType = {
   rowData: RowData;
   lineLevel: number;
   hasParent: boolean;
-  parents: any;
+  parents: number[];
 };
 export function TableRowComponent({
   rowData,
@@ -65,7 +65,7 @@ export function TableRowComponent({
   );
 }
 
-export function EditableTableRowCompomnent({
+export function EditableTableRowComponent({
   rowData,
   hasParent,
   lineLevel,
@@ -79,22 +79,26 @@ export function EditableTableRowCompomnent({
   const editable = useAppSelector(state => state.rows.editable);
   const dispatch = useAppDispatch();
   const columns = TableColumns();
-  const saveNewRow = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      const params: CreateRowData = {
-        id: rowData.id,
-        rowName: newRowName,
-        parentId: rowData.parentId,
-        salary: newSalary || 0,
-        overheads: newOverheads || 0,
-        equipmentCosts: newEquipmentCosts || 0,
-        estimatedProfit: newEstimatedProfit || 0,
-      };
-      // eslint-disable-next-line no-unused-expressions
-      editable === 0 ? dispatch(createRow(params)) : dispatch(updateRow(params));
-    }
-    return e.key;
-  };
+
+  const saveNewRow = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        const params: CreateRowData = {
+          id: rowData.id,
+          rowName: newRowName,
+          parentId: rowData.parentId,
+          salary: newSalary || 0,
+          overheads: newOverheads || 0,
+          equipmentCosts: newEquipmentCosts || 0,
+          estimatedProfit: newEstimatedProfit || 0,
+        };
+        // eslint-disable-next-line no-unused-expressions
+        editable === 0 ? dispatch(createRow(params)) : dispatch(updateRow(params));
+      }
+      return e.key;
+    },
+    [newRowName, newSalary, newOverheads, newEstimatedProfit, newEquipmentCosts],
+  );
 
   const level = (
     <div>

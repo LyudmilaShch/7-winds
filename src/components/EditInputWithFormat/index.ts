@@ -1,3 +1,1 @@
-import EditInputWithFormat from './EditInputWithFormat';
-
-export { EditInputWithFormat };
+export { EditInputWithFormat } from './EditInputWithFormat';

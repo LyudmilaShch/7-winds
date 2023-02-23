@@ -36,7 +36,7 @@ export type CreateRowData = {
 
 export type ResType = {
   current: RowData;
-  changed: RowData;
+  changed: RowData[];
 };
 export type FieldErrorType = { field: string; error: string };
 

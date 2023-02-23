@@ -2,29 +2,35 @@
 @import "../../common/styles/sass/mixins";
 
 .ProjectWorksContainer {
-  width: 100%;
-  height: 100%;
+  width: calc(100vw - 234px);
+  height: calc(100vh - 90px);
   background-color: $bgColorSecond;
 
   .ProjectWorksTableContainer{
+    background-color: $bgColorSecond;
+    width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
     border-radius: 0;
     border: none;
     box-shadow: none;
+    padding: 10px;
 
     .ProjectWorksTable {
       @include text(14px, $textColor);
       background-color: $bgColorSecond;
       padding: 12px;
-      width: 100%;
-      height: 100%;
 
       .tableBody{
         @include text(14px, $textColor);
 
+        tr{
+          max-height: 40px !important;
+        }
+
         th{
           @include text(14px, $textColor);
           border-bottom: 1px solid $borderColor;
-          height: 59px !important;
+          max-height: 59px !important;
           margin: 0;
           padding: 0;
         }

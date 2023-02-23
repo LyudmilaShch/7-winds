@@ -1,4 +1,4 @@
-import { AppRootStateType } from '../utils/types';
+import { AppRootStateType } from 'utils';
 
 export const statusSelector = (state: AppRootStateType) => state.app.status;
 

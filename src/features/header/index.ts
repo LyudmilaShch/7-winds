@@ -1,3 +1,1 @@
-import { HeaderMenu } from './HeaderMenu';
-
-export { HeaderMenu };
+export { HeaderMenu } from './HeaderMenu';

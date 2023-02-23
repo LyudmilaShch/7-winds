@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ItemProjectTitle } from './itemProjectTitle/ItemProjectTitle';
+import { ItemProjectTitle } from './itemProjectTitle';
 import s from './Sidebar.module.scss';
 
 import downArrow from 'assets/images/downArrow.svg';

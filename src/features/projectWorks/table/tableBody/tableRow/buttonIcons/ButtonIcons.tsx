@@ -8,7 +8,7 @@ import {
 } from '../../../../tableRowsSlice';
 
 import s from './ButtonIcons.module.scss';
-import DeepLineValue from './deepLineValue/DeepLineValue';
+import DeepLineValue from './deepLineValue';
 
 import { RowData } from 'api/types';
 import deleteIcon from 'assets/images/deleteIcon.svg';
@@ -19,7 +19,7 @@ type ButtonIconsType = {
   hasParent: boolean;
   row: RowData;
   lineLevel: number;
-  parents: any;
+  parents: number[];
   id: number | undefined;
 };
 
@@ -38,6 +38,9 @@ export default function ButtonIcons({
     () => (hasParent ? `${s.createRow} ${s.createRow_hasparent}` : `${s.createRow}`),
     [hasParent],
   );
+
+  const buttonsContainerStyle =
+    editable === null ? `${s.buttonsContainer}` : `${s.buttonsContainer} ${s.editable}`;
 
   const createRowHandle = () => {
     if (editable === null) {
@@ -61,9 +64,14 @@ export default function ButtonIcons({
           marginLeft: `${20 * lineLevel}px`,
         }}
       >
-        <div className={s.leftLine} style={{ height: `${60 * deepLine}px` }} />
-        <div className={s.buttons_cont}>
-          <button type="button" onClick={createRowHandle} className={buttonsStyle}>
+        <div className={s.leftLine} style={{ height: `${61 * deepLine}px` }} />
+        <div className={buttonsContainerStyle}>
+          <button
+            type="button"
+            onClick={createRowHandle}
+            className={buttonsStyle}
+            disabled={editable !== null}
+          >
             <img src={rowItemIcon} alt="rowItemIcon" />
           </button>
           <button type="button" onClick={deleteRowHandle} className={s.delRow}>

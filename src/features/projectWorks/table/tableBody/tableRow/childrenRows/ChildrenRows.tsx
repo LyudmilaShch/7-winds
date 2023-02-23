@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TableBodyComponent from '../../TableBodyComponent';
+import { TableBodyComponent } from '../../TableBodyComponent';
 
 import { RowData } from 'api/types';
 

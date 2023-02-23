@@ -2,11 +2,14 @@
 @import "../../../../common/styles/sass/mixins";
 
 .tableTitleContainer {
-  height: 40px;
+  //height: 40px;
+  //padding: 0;
 
   .tableTitle {
     @include text(14px, $textColorSecond);
     border-bottom: 1px solid $borderColor;
+    height: 40px;
+    padding: 0;
 
   }
 }

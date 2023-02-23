@@ -7,8 +7,8 @@ export interface ColumnTable {
 export function TableColumns() {
   const columns: ColumnTable[] = [
     { id: 'level', name: 'Уровень' },
-    { id: 'rowName', name: 'Наименование работ', minWidth: 300 },
-    { id: 'salary', name: 'Основная з/п' },
+    { id: 'rowName', name: 'Наименование работ', minWidth: 250 },
+    { id: 'salary', name: 'Основная зп' },
     { id: 'equipmentCosts', name: 'Оборудование' },
     { id: 'overheads', name: 'Накладные расходы' },
     { id: 'estimatedProfit', name: 'Сметная прибыль' },

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { appActions } from '../commonActions/App';
+import { appActions } from '../commonActions';
 
 export const slice = createSlice({
   name: 'app',

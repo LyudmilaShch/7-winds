@@ -5,16 +5,14 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 
-import { rowsDataSelector } from '../../app/selectors';
-import { useAppSelector } from '../../hooks';
-
 import s from './ProjectWorks.module.scss';
-import { ProjectWorksHeader } from './projectWorksHeader/ProjectWorksHeader';
-import TableBodyComponent from './table/tableBody/TableBodyComponent';
-import { TableColumns } from './table/tableBody/tableColumns/TableColumns';
-import { TableTitle } from './table/tableTitle/TableTitle';
+import { ProjectWorksHeader } from './projectWorksHeader';
+import { TableBodyComponent, TableColumns, TableTitle } from './table';
 
-export default function ProjectWorks() {
+import { rowsDataSelector } from 'app/selectors';
+import { useAppSelector } from 'hooks';
+
+export function ProjectWorks() {
   const rowsData = useAppSelector(rowsDataSelector);
   const columns = TableColumns();
 
