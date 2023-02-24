@@ -11,7 +11,6 @@ type EditInputType = {
 };
 export const EditInputWithFormat = React.memo(
   ({ saveNewRow, newValue, setNewValue }: EditInputType) => {
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       setNewValue(Number(e.target.value.replace(/\s/g, '')));
     };
