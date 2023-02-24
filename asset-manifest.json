@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/7-winds/static/css/main.efa89d9e.css",
+    "main.js": "/7-winds/static/js/main.c81a18d9.js",
+    "static/media/deleteIcon.svg": "/7-winds/static/media/deleteIcon.59e01782cb2b657f5a4ce90344b7df38.svg",
+    "index.html": "/7-winds/index.html",
+    "static/media/projectIcon.svg": "/7-winds/static/media/projectIcon.7774a2e0fea6b014886738316a36aca8.svg",
+    "static/media/rowItemIcon.svg": "/7-winds/static/media/rowItemIcon.db362b6378722cbf8dd4a134bb262e52.svg",
+    "static/media/upArrow.svg": "/7-winds/static/media/upArrow.dee2b9891a629f43555d037e61161d4b.svg",
+    "static/media/downArrow.svg": "/7-winds/static/media/downArrow.db07f290cbbabf1e582096f70ae0a2c8.svg",
+    "static/media/menu.svg": "/7-winds/static/media/menu.11f97507b87f3ac10b1a93209dd21433.svg",
+    "static/media/backMenu.svg": "/7-winds/static/media/backMenu.937d6be56823fddadf07aec5d199d7d2.svg",
+    "main.efa89d9e.css.map": "/7-winds/static/css/main.efa89d9e.css.map",
+    "main.c81a18d9.js.map": "/7-winds/static/js/main.c81a18d9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.efa89d9e.css",
+    "static/js/main.c81a18d9.js"
+  ]
+}
