@@ -20,8 +20,7 @@ const { setAppStatus } = appActions;
 
 const updateChangedRows = (changedRows: RowData[], currentRows: RowData[]) => {
   if (changedRows.length !== 0) {
-    // eslint-disable-next-line array-callback-return
-    changedRows.map(el => {
+    changedRows.forEach(el => {
       const FakeArrayChanged: any = [];
       const newObjectGeneral = el;
       let newObject: RowData = {
@@ -37,21 +36,15 @@ const updateChangedRows = (changedRows: RowData[], currentRows: RowData[]) => {
         salary: 0,
         supportCosts: 0,
       };
-      // eslint-disable-next-line array-callback-return
-      currentRows.map((e2: any) => {
-        // eslint-disable-next-line prefer-destructuring
-        newObject = objTraverse.findAll(e2, 'child', {
-          id: el.id,
-        })[0];
+      currentRows.forEach((row: RowData) => {
+        newObject = {
+          ...objTraverse.findAll(row, 'child', {
+            id: el.id,
+          })[0],
+        };
       });
-
-      if (newObject.child) {
-        newObjectGeneral.child = newObject.child;
-      } else {
-        newObjectGeneral.child = [];
-      }
-      // eslint-disable-next-line array-callback-return
-      currentRows.map(row => {
+      newObjectGeneral.child = newObject.child ? [...newObject.child] : [];
+      currentRows.forEach(row => {
         const newData = objTraverse.findAndModifyAll(
           row,
           'child',

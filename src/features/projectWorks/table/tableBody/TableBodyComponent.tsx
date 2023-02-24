@@ -38,7 +38,7 @@ export function TableBodyComponent({
 
         if (editable !== null && editable === row.id) {
           return (
-            <>
+            <React.Fragment key={row.id}>
               <TableRow
                 key={row.id}
                 hover
@@ -46,6 +46,7 @@ export function TableBodyComponent({
                 onDoubleClick={editRowHandle}
               >
                 <EditableTableRowComponent
+                  key={row.id}
                   rowData={row}
                   lineLevel={lineLevel}
                   hasParent={hasParent}
@@ -59,11 +60,11 @@ export function TableBodyComponent({
                   lineLevel={lineLevel}
                 />
               )}
-            </>
+            </React.Fragment>
           );
         }
         return (
-          <>
+          <React.Fragment key={row.id}>
             <TableRow
               key={row.id}
               hover
@@ -71,6 +72,7 @@ export function TableBodyComponent({
               onDoubleClick={editRowHandle}
             >
               <TableRowComponent
+                key={row.id}
                 rowData={row}
                 lineLevel={lineLevel}
                 hasParent={hasParent}
@@ -84,7 +86,7 @@ export function TableBodyComponent({
                 parents={[...parents, row.id!]}
               />
             )}
-          </>
+          </React.Fragment>
         );
       })}
     </>

@@ -11,20 +11,18 @@ export default function DeepLineValue(row: RowData) {
   let level = 0;
   let lastlevel = 0;
   const getDeep = (rowData: RowData) => {
-    rowData.child.map((e: RowData) => {
+    rowData.child.forEach((e: RowData) => {
       level += 1;
       setDeepLevel(level);
       getDeep(e);
-      return null;
     });
   };
 
   const getlastDeep = (rowData: RowData) => {
     lastlevel += rowData.child.length || 0;
     setLastDeepLevel(lastlevel);
-    rowData.child.map((e: any) => {
+    rowData.child.forEach((e: any) => {
       getlastDeep(e);
-      return null;
     });
   };
 
