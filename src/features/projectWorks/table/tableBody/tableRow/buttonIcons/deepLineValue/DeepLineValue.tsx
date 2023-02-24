@@ -34,9 +34,11 @@ export default function DeepLineValue(row: RowData) {
     if (row.child && row.child.length !== 0) {
       getDeep(row);
       getlastDeep(row.child[row.child.length - 1]);
+    } else {
+      setDeepLevel(level);
+      setLastDeepLevel(lastlevel);
     }
   }, [rowsData]);
 
-  const deepLine = deepLevel - lastDeepLevel;
-  return deepLine;
+  return deepLevel - lastDeepLevel;
 }

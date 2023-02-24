@@ -1,7 +1,6 @@
-import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { appReducer } from '../features/application';
-import { tableRowsReducer } from '../features/projectWorks';
+import { appReducer, tableRowsReducer } from 'features';
 
 export const rootReducer = combineReducers({
   rows: tableRowsReducer,
@@ -14,9 +13,3 @@ export const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;

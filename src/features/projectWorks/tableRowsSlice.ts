@@ -1,10 +1,12 @@
-import { createAsyncThunk, createSlice, current, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { appActions } from '../commonActions/App';
+import { appActions } from '../commonActions';
 
 import { tableRowsAPI } from 'api/tableRows-API';
 import { CreateRowData, Data, ResType, RowData } from 'api/types';
 import { handleAsyncServerNetworkError, ThunkError } from 'utils';
+
+const objTraverse = require('obj-traverse/lib/obj-traverse');
 
 const initialState: Data = {
   rows: [],
@@ -15,6 +17,59 @@ const initialState: Data = {
 };
 
 const { setAppStatus } = appActions;
+
+const updateChangedRows = (changedRows: RowData[], currentRows: RowData[]) => {
+  if (changedRows.length !== 0) {
+    // eslint-disable-next-line array-callback-return
+    changedRows.map(el => {
+      const FakeArrayChanged: any = [];
+      const newObjectGeneral = el;
+      let newObject: RowData = {
+        child: [],
+        equipmentCosts: 0,
+        estimatedProfit: 0,
+        machineOperatorSalary: 0,
+        mainCosts: 0,
+        materials: 0,
+        mimExploitation: 0,
+        overheads: 0,
+        rowName: '',
+        salary: 0,
+        supportCosts: 0,
+      };
+      // eslint-disable-next-line array-callback-return
+      currentRows.map((e2: any) => {
+        // eslint-disable-next-line prefer-destructuring
+        newObject = objTraverse.findAll(e2, 'child', {
+          id: el.id,
+        })[0];
+      });
+
+      if (newObject.child) {
+        newObjectGeneral.child = newObject.child;
+      } else {
+        newObjectGeneral.child = [];
+      }
+      // eslint-disable-next-line array-callback-return
+      currentRows.map(row => {
+        const newData = objTraverse.findAndModifyAll(
+          row,
+          'child',
+          { id: newObjectGeneral.id },
+          newObjectGeneral,
+        );
+        if (newData) {
+          FakeArrayChanged.push(newData);
+        } else {
+          FakeArrayChanged.push(el);
+        }
+      });
+      currentRows = currentRows.map(row =>
+        row.id === FakeArrayChanged.id ? { ...row, ...FakeArrayChanged.row } : row,
+      );
+    });
+  }
+};
 
 export const fetchTableRows = createAsyncThunk<
   { tableRows: RowData[] },
@@ -108,9 +163,6 @@ export const slice = createSlice({
   name: 'table',
   initialState,
   reducers: {
-    setFakeRowsData(state, action: PayloadAction<RowData[]>) {
-      state.rows = action.payload;
-    },
     createRowLocally(state, action: PayloadAction<{ parentId: number }>) {
       const newRow: RowData = {
         equipmentCosts: 0,
@@ -202,6 +254,7 @@ export const slice = createSlice({
           state.editable = null;
           state.path = [];
         }
+        updateChangedRows(action.payload.row.changed, state.rows);
       })
 
       .addCase(updateRow.fulfilled, (state, action) => {
@@ -227,74 +280,7 @@ export const slice = createSlice({
           state.editable = null;
           state.path = [];
         }
-
-        if (action.payload.row.changed.length !== 0) {
-          const changeRow = (rows: RowData[], el: RowData) => {
-            state.rows = rows.map(row => (row.id === el.id ? { ...row, ...el } : row));
-            // eslint-disable-next-line array-callback-return
-            rows.map(r => {
-              if (r.child.length > 0) {
-                changeRow(r.child, el);
-              }
-            });
-          };
-          // eslint-disable-next-line array-callback-return
-          action.payload.row.changed.map((el: RowData) => {
-            // eslint-disable-next-line array-callback-return
-            changeRow(state.rows, el);
-          });
-        }
-
-        // if (action.payload.row.changed.length !== 0) {
-        //   // eslint-disable-next-line array-callback-return
-        //   action.payload.row.changed.map(el => {
-        //     const FakeArrayChanged: any = [];
-        //     const newObjectGeneral = el;
-        //     let newObject: RowData = {
-        //       child: [],
-        //       equipmentCosts: 0,
-        //       estimatedProfit: 0,
-        //       machineOperatorSalary: 0,
-        //       mainCosts: 0,
-        //       materials: 0,
-        //       mimExploitation: 0,
-        //       overheads: 0,
-        //       rowName: '',
-        //       salary: 0,
-        //       supportCosts: 0,
-        //     };
-        //     console.log(current(state.rows));
-        //     // eslint-disable-next-line array-callback-return
-        //     state.rows.map((e2: any) => {
-        //       // eslint-disable-next-line prefer-destructuring
-        //       newObject = objTraverse.findAll(e2, 'child', {
-        //         id: el.id,
-        //       })[0];
-        //
-        //     });
-        //
-        //     if (newObject.child) {
-        //       newObjectGeneral.child = newObject.child;
-        //     } else {
-        //       newObjectGeneral.child = [];
-        //     }
-        //     // eslint-disable-next-line array-callback-return
-        //     state.rows.map(row => {
-        //       const newData = objTraverse.findAndModifyAll(
-        //         row,
-        //         'child',
-        //         { id: newObjectGeneral.id },
-        //         newObjectGeneral,
-        //       );
-        //       if (newData) {
-        //         FakeArrayChanged.push(newData);
-        //       } else {
-        //         FakeArrayChanged.push(el);
-        //       }
-        //     });
-        //     state.rows = { ...FakeArrayChanged };
-        //   });
-        // }
+        updateChangedRows(action.payload.row.changed, state.rows);
       })
 
       .addCase(deleteRow.fulfilled, (state, action) => {

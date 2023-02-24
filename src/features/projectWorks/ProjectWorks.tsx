@@ -20,11 +20,7 @@ export function ProjectWorks() {
     <div className={s.ProjectWorksContainer}>
       <ProjectWorksHeader projectName="Строительно-монтажные работы" />
       <TableContainer component={Paper} className={s.ProjectWorksTableContainer}>
-        <Table
-          sx={{ minWidth: 650 }}
-          aria-label="simple table"
-          className={s.ProjectWorksTable}
-        >
+        <Table sx={{ minWidth: 650 }} className={s.ProjectWorksTable}>
           <TableTitle columns={columns} />
           <TableBody className={s.tableBody}>
             <TableBodyComponent
